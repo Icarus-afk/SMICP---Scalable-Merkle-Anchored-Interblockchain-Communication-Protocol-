@@ -1,10 +1,10 @@
-# SCIMP - Scalable Merkle-Anchored Interblockchain Communication Protocol
+# SMICP - Scalable Merkle-Anchored Interblockchain Communication Protocol
 
-A comprehensive implementation of SCIMP using Hyperledger Fabric for secure, atomic, and privacy-preserving communication between multiple permissioned blockchains.
+A comprehensive implementation of SMICP using Hyperledger Fabric for secure, atomic, and privacy-preserving communication between multiple permissioned blockchains.
 
 ## Overview
 
-SCIMP enables secure cross-chain communication through:
+SMICP enables secure cross-chain communication through:
 - **Merkle Root Anchoring**: Cryptographic fingerprints of sidechain blocks anchored on mainchain
 - **Cross-Chain Verification**: Lightweight verification using Merkle proofs
 - **Atomic Transactions**: Two-Phase Commit protocol for atomic cross-chain operations
@@ -25,7 +25,7 @@ SCIMP enables secure cross-chain communication through:
    - Verify cross-chain transactions using Merkle proofs
    - Participate in atomic cross-chain transactions
 
-3. **Coordinator (ScimpCoordinator)**
+3. **Coordinator (SMICPCoordinator)**
    - Manages Two-Phase Commit protocol
    - Ensures atomicity across multiple chains
    - Handles timeout and failure scenarios
@@ -84,18 +84,18 @@ chmod +x network/stop-network.sh
 # Start the demo network (simplified version)
 npm run start-network
 
-# Run the SCIMP demonstration
+# Run the SMICP demonstration
 npm run demo
 ```
 
 ## Project Structure
 
 ```
-SCIMP/
+SMICP/
 ├── chaincode/                 # Smart contracts
 │   ├── anchor-registry.js     # Mainchain anchor registry
 │   ├── sidechain-verifier.js  # Sidechain verification logic
-│   └── scimp-coordinator.js   # Two-phase commit coordinator
+│   └── SMICP-coordinator.js   # Two-phase commit coordinator
 ├── lib/                       # Core libraries
 │   └── merkle.js             # Merkle tree implementation
 ├── application/              # Client applications
@@ -104,7 +104,7 @@ SCIMP/
 │   ├── start-network.sh      # Network startup script
 │   └── stop-network.sh       # Network cleanup script
 ├── scripts/                  # Demonstration scripts
-│   └── demo_multichain_2pc.js # Complete SCIMP demo
+│   └── demo_multichain_2pc.js # Complete SMICP demo
 └── test/                     # Test files
 ```
 
@@ -112,7 +112,7 @@ SCIMP/
 
 ### Running the Demo
 
-The complete SCIMP demonstration showcases all protocol features:
+The complete SMICP demonstration showcases all protocol features:
 
 ```bash
 npm run demo
@@ -141,10 +141,10 @@ npm run stop-network
 #### Interacting with Chaincode
 
 ```javascript
-const ScimpGateway = require('./application/gateway');
+const SMICPGateway = require('./application/gateway');
 
 // Connect to mainchain
-const gateway = new ScimpGateway();
+const gateway = new SMICPGateway();
 await gateway.connect('mainchain', 'admin');
 
 // Anchor a Merkle root
