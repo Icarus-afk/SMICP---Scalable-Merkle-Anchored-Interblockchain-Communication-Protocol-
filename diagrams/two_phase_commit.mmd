@@ -1,0 +1,38 @@
+stateDiagram-v2
+    [*] --> Idle
+    
+    state "Two-Phase Commit" as TPC {
+        state "Phase 1: Prepare" as P1 {
+            Idle --> Preparing: Initiate Epoch
+            Preparing --> WaitingPrepare: Send PREPARE
+            WaitingPrepare --> Evaluating: Collect Responses
+            
+            state Evaluating {
+                [*] --> CheckAll
+                CheckAll --> AllPrepared: All PREPARED
+                CheckAll --> SomeAborted: Any ABORT
+            }
+        }
+        
+        state "Phase 2: Commit" as P2 {
+            AllPrepared --> Committing: Send COMMIT
+            SomeAborted --> Aborting: Send ABORT
+            
+            Committing --> WaitingCommit: Execute
+            Aborting --> WaitingAbort: Rollback
+            
+            WaitingCommit --> Success
+            WaitingAbort --> Failed
+        }
+    }
+    
+    state "Recovery" as R {
+        WaitingPrepare --> TimeoutRecovery: Timeout
+        WaitingCommit --> FaultRecovery: Network Fault
+        
+        TimeoutRecovery --> Aborting: Auto-rollback
+        FaultRecovery --> Committing: Retry
+    }
+    
+    Success --> [*]
+    Failed --> [*]

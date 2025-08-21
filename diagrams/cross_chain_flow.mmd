@@ -1,0 +1,23 @@
+sequenceDiagram
+    participant A as Sidechain A
+    participant M as Mainchain
+    participant B as Sidechain B
+    
+    Note over A,B: Cross-Chain Verification Protocol
+    
+    A->>A: Process Transactions
+    A->>A: Generate Merkle Root
+    
+    A->>M: Submit Anchor
+    Note right of M: Store root + signatures
+    M->>A: Confirmation
+    
+    B->>A: Request Verification
+    Note right of A: TX Hash provided
+    
+    A->>B: Generate Proof
+    B->>M: Query Root
+    M->>B: Return Root
+    
+    B->>B: Verify Proof
+    Note right of B: PASS/FAIL result

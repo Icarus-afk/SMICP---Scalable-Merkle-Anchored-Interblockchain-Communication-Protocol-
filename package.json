@@ -1,0 +1,51 @@
+{
+  "name": "scimp-hyperledger",
+  "version": "1.0.0",
+  "description": "Scalable Merkle-Anchored Interblockchain Communication Protocol (SCIMP) on Hyperledger Fabric",
+  "main": "index.js",
+  "scripts": {
+    "start-network": "cd network && ./start-network.sh",
+    "stop-network": "cd network && ./stop-network.sh",
+    "deploy-chaincode": "cd network && ./deploy-chaincode.sh",
+    "test": "mocha test/**/*.js --timeout 10000",
+    "demo": "node scripts/comprehensive_demo.js",
+    "demo:quick": "node scripts/comprehensive_demo.js quick",
+    "demo:standard": "node scripts/comprehensive_demo.js standard",
+    "demo:comprehensive": "node scripts/comprehensive_demo.js comprehensive",
+    "start-mainchain": "node scripts/start-mainchain.js",
+    "start-sidechain": "node scripts/start-sidechain.js",
+    "install:fabric": "echo 'Installing Hyperledger Fabric...' && curl -sSLO https://raw.githubusercontent.com/hyperledger/fabric/main/scripts/install-fabric.sh && chmod +x install-fabric.sh && ./install-fabric.sh docker samples binary"
+  },
+  "keywords": [
+    "hyperledger",
+    "fabric",
+    "blockchain",
+    "interchain",
+    "merkle",
+    "2pc"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ethereumjs/common": "^10.0.0",
+    "@ethereumjs/tx": "^10.0.0",
+    "body-parser": "^1.20.2",
+    "crypto": "^1.0.1",
+    "ethereumjs-util": "^7.1.5",
+    "ethers": "^6.15.0",
+    "express": "^4.18.2",
+    "fabric-ca-client": "^2.2.19",
+    "fabric-common": "^2.2.19",
+    "fabric-network": "^2.2.19",
+    "merkletreejs": "^0.3.11",
+    "solc": "^0.8.30",
+    "uuid": "^9.0.1",
+    "web3": "^4.16.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0"
+  }
+}

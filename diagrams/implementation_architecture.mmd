@@ -1,0 +1,57 @@
+graph TD
+    subgraph "Application Layer"
+        APP[Supply Chain Applications]
+    end
+    
+    subgraph "Gateway Layer"
+        GW[SMICP Gateway]
+        GW --> API[API Methods<br/>• submitTransaction<br/>• queryLedger<br/>• anchorMerkleRoot<br/>• verifyTransaction<br/>• initiate2PC]
+    end
+    
+    subgraph "Hyperledger Fabric"
+        subgraph "Chaincode"
+            ARC[Anchor Registry<br/>Chaincode]
+            SVC[Sidechain Verifier<br/>Chaincode]
+            SCC[SMICP Coordinator<br/>Chaincode]
+        end
+        
+        subgraph "Infrastructure"
+            PEER[Peer Nodes]
+            ORDER[Ordering Service]
+            CA[Certificate Authority]
+        end
+    end
+    
+    subgraph "Storage"
+        AL[Anchor Ledger]
+        TL[Transaction Ledger]
+        EL[Epoch Ledger]
+    end
+    
+    APP --> GW
+    API --> ARC
+    API --> SVC
+    API --> SCC
+    
+    ARC --> PEER
+    SVC --> PEER
+    SCC --> PEER
+    
+    PEER --> ORDER
+    PEER --> CA
+    
+    ARC --> AL
+    SVC --> TL
+    SCC --> EL
+    
+    classDef application fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    classDef gateway fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px
+    classDef chaincode fill:#E8F5E8,stroke:#388E3C,stroke-width:2px
+    classDef infrastructure fill:#FFF3E0,stroke:#F57C00,stroke-width:2px
+    classDef storage fill:#FFEBEE,stroke:#D32F2F,stroke-width:2px
+    
+    class APP application
+    class GW,API gateway
+    class ARC,SVC,SCC chaincode
+    class PEER,ORDER,CA infrastructure
+    class AL,TL,EL storage

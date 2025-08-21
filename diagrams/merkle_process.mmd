@@ -1,0 +1,78 @@
+graph TD
+    %% Transactions
+    T1[TX1]
+    T2[TX2] 
+    T3[TX3]
+    T4[TX4]
+    T5[TX5]
+    T6[TX6]
+    T7[TX7]
+    T8[TX8]
+    
+    %% Level 1 Hashes
+    H1[H1]
+    H2[H2]
+    H3[H3]
+    H4[H4]
+    H5[H5]
+    H6[H6]
+    H7[H7]
+    H8[H8]
+    
+    %% Level 2 Intermediate
+    I12[H12]
+    I34[H34]
+    I56[H56]
+    I78[H78]
+    
+    %% Level 3 Intermediate  
+    I1234[H1234]
+    I5678[H5678]
+    
+    %% Root
+    ROOT[Merkle Root]
+    
+    %% Hash connections
+    T1 --> H1
+    T2 --> H2
+    T3 --> H3
+    T4 --> H4
+    T5 --> H5
+    T6 --> H6
+    T7 --> H7
+    T8 --> H8
+    
+    %% Tree building
+    H1 --> I12
+    H2 --> I12
+    H3 --> I34
+    H4 --> I34
+    H5 --> I56
+    H6 --> I56
+    H7 --> I78
+    H8 --> I78
+    
+    I12 --> I1234
+    I34 --> I1234
+    I56 --> I5678
+    I78 --> I5678
+    
+    I1234 --> ROOT
+    I5678 --> ROOT
+    
+    %% Proof path for TX3
+    H4 -.->|Proof Element| ROOT
+    I12 -.->|Proof Element| ROOT
+    I5678 -.->|Proof Element| ROOT
+    
+    classDef transaction fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    classDef hash fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px
+    classDef intermediate fill:#E8F5E8,stroke:#388E3C,stroke-width:2px
+    classDef root fill:#FFF3E0,stroke:#F57C00,stroke-width:3px
+    classDef proof fill:#FFEBEE,stroke:#D32F2F,stroke-width:2px,stroke-dasharray: 5 5
+    
+    class T1,T2,T3,T4,T5,T6,T7,T8 transaction
+    class H1,H2,H3,H4,H5,H6,H7,H8 hash
+    class I12,I34,I56,I78,I1234,I5678 intermediate
+    class ROOT root
+    class H4,I12,I5678 proof

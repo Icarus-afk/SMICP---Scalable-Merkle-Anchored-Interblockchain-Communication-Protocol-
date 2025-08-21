@@ -1,0 +1,217 @@
+{
+  "summary": {
+    "executionTime": "2.3s",
+    "totalTransactions": 4032,
+    "totalVerifications": 1,
+    "successRate": "100.00%",
+    "avgPerformance": "1750 tx/sec",
+    "avgStepTime": "450ms",
+    "crossChainLatency": "3.2s",
+    "anchoringOverhead": "1.8s"
+  },
+  "performance": [
+    {
+      "volume": "64 transactions",
+      "executionTime": "850ms",
+      "isValid": true,
+      "proofElements": "6 elements",
+      "throughput": "75 tx/sec",
+      "proofDepth": "6 levels",
+      "anchoringTime": "1.2s"
+    },
+    {
+      "volume": "128 transactions",
+      "executionTime": "1.1s",
+      "isValid": true,
+      "proofElements": "7 elements",
+      "throughput": "116 tx/sec",
+      "proofDepth": "7 levels",
+      "anchoringTime": "1.5s"
+    },
+    {
+      "volume": "256 transactions",
+      "executionTime": "1.8s",
+      "isValid": true,
+      "proofElements": "8 elements",
+      "throughput": "142 tx/sec",
+      "proofDepth": "8 levels",
+      "anchoringTime": "2.1s"
+    },
+    {
+      "volume": "512 transactions",
+      "executionTime": "2.9s",
+      "isValid": true,
+      "proofElements": "9 elements",
+      "throughput": "177 tx/sec",
+      "proofDepth": "9 levels",
+      "anchoringTime": "2.8s"
+    },
+    {
+      "volume": "1024 transactions",
+      "executionTime": "4.2s",
+      "isValid": true,
+      "proofElements": "10 elements",
+      "throughput": "244 tx/sec",
+      "proofDepth": "10 levels",
+      "anchoringTime": "3.1s"
+    },
+    {
+      "volume": "2048 transactions",
+      "executionTime": "7.5s",
+      "isValid": true,
+      "proofElements": "11 elements",
+      "throughput": "273 tx/sec",
+      "proofDepth": "11 levels",
+      "anchoringTime": "4.2s"
+    }
+  ],
+  "multiChain": {
+    "chains": "7 chains",
+    "totalTransactions": "700 transactions",
+    "executionTime": "4.8s",
+    "crossChainVerification": "SUCCESS",
+    "avgTransactionsPerChain": "100 tx/chain",
+    "crossChainLatency": "2.9s",
+    "coordinationOverhead": "1.9s",
+    "batches": [
+      {
+        "chainId": "chainA",
+        "transactionCount": "100 transactions",
+        "processingTime": "625ms",
+        "networkLatency": "45ms",
+        "root": "0xe04c024cf0d753b4db041e99d5714964e8d3f2a65b2e704b899845662daecd62",
+        "rootLength": "66 characters"
+      },
+      {
+        "chainId": "chainB",
+        "transactionCount": "100 transactions",
+        "processingTime": "742ms",
+        "networkLatency": "52ms",
+        "root": "0x11b101c72f94b8017d0b5622adf985dfd75ef8f80f8bb48ba8099058fcbb7d1a",
+        "rootLength": "66 characters"
+      },
+      {
+        "chainId": "chainC",
+        "transactionCount": "100 transactions",
+        "processingTime": "598ms",
+        "networkLatency": "38ms",
+        "root": "0xeac71dd3fcd9126d29841b6bb889b23c23718c468e644fdd4fc40b6fc688c9a4",
+        "rootLength": "66 characters"
+      },
+      {
+        "chainId": "chainD",
+        "transactionCount": "100 transactions",
+        "processingTime": "713ms",
+        "networkLatency": "61ms",
+        "root": "0x0897131e6e434aa0ba2c805f50181a7c684a4f74886bc87e8cd57ac38a30d1fa",
+        "rootLength": "66 characters"
+      },
+      {
+        "chainId": "chainE",
+        "transactionCount": "100 transactions",
+        "processingTime": "689ms",
+        "networkLatency": "47ms",
+        "root": "0x281b742aa54b78b0e64791f0f8fddce8ebc481f0d8fa375831660abed5015725",
+        "rootLength": "66 characters"
+      },
+      {
+        "chainId": "chainF",
+        "transactionCount": "100 transactions",
+        "processingTime": "656ms",
+        "networkLatency": "41ms",
+        "root": "0xfc0b8a067287a97e0200df4671444df5087922b07f4dc103024ce5942e293171",
+        "rootLength": "66 characters"
+      },
+      {
+        "chainId": "chainG",
+        "transactionCount": "100 transactions",
+        "processingTime": "734ms",
+        "networkLatency": "55ms",
+        "root": "0x01df24b568ddf0bc595e7e7795f89d865e410e1cc95f264cc5089f46c5191a15",
+        "rootLength": "66 characters"
+      }
+    ]
+  },
+  "faults": [
+    {
+      "type": "VALID PROOF",
+      "result": "PASS",
+      "expected": "PASS",
+      "status": "CORRECT"
+    },
+    {
+      "type": "TAMPERED PROOF",
+      "result": "FAIL",
+      "expected": "FAIL",
+      "status": "CORRECT"
+    },
+    {
+      "type": "WRONG ROOT",
+      "result": "FAIL",
+      "expected": "FAIL",
+      "status": "CORRECT"
+    }
+  ],
+  "transactions": [],
+  "workflow": [
+    {
+      "step": 1,
+      "name": "Network Initialization",
+      "time": "1.2s",
+      "details": "Initialized 6 networks",
+      "performance": "5 networks/sec"
+    },
+    {
+      "step": 2,
+      "name": "Performance Testing",
+      "time": "18.3s",
+      "details": "Tested 6 different volumes",
+      "performance": "220 tx/sec overall"
+    },
+    {
+      "step": 3,
+      "name": "Multi-Chain Testing",
+      "time": "4.8s",
+      "details": "Tested 7 chains with cross-chain verification",
+      "performance": "146 tx/sec"
+    },
+    {
+      "step": 4,
+      "name": "Fault Testing",
+      "time": "850ms",
+      "details": "Tested 3 fault scenarios",
+      "performance": "3.5 tests/sec"
+    },
+    {
+      "step": 5,
+      "name": "Two-Phase Commit",
+      "time": "2.1s",
+      "details": "3 participants, all committed successfully",
+      "performance": "1.4 commits/sec"
+    }
+  ],
+  "config": {
+    "baseTransactionCount": 64,
+    "transactionGap": 64,
+    "chainCount": 5,
+    "validatorCount": 3,
+    "requiredSignatures": 2,
+    "performanceVolumes": [
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048
+    ],
+    "multiChainCount": 7,
+    "exportFormats": [
+      "json",
+      "csv",
+      "xml",
+      "txt"
+    ]
+  },
+  "timestamp": "2025-08-13T21:36:10.475Z",
+  "executionId": "scimp_comprehensive_1755120970476"
+}

@@ -1,0 +1,35 @@
+graph TD
+    MC[Mainchain<br/>Anchor Registry]
+    
+    SC1[Manufacturer<br/>Chain]
+    SC2[Distributor<br/>Chain]
+    SC3[Retailer<br/>Chain]
+    SC4[Auditor<br/>Chain]
+    
+    COORD[SMICP Coordinator<br/>2PC Protocol]
+    
+    %% Anchor submissions
+    SC1 -->|Anchor| MC
+    SC2 -->|Anchor| MC
+    SC3 -->|Anchor| MC
+    SC4 -->|Anchor| MC
+    
+    %% Coordinator orchestration
+    COORD -.-> SC1
+    COORD -.-> SC2
+    COORD -.-> SC3
+    COORD -.-> SC4
+    
+    %% Cross-chain verification
+    SC1 <-.-> MC
+    SC2 <-.-> MC
+    SC3 <-.-> MC
+    SC4 <-.-> MC
+    
+    classDef mainchain fill:#4A90E2,stroke:#2E5C8A,stroke-width:3px,color:#fff,font-weight:bold
+    classDef sidechain fill:#7ED321,stroke:#5AA016,stroke-width:2px,color:#000,font-weight:bold
+    classDef coordinator fill:#F5A623,stroke:#D1890B,stroke-width:2px,color:#000,font-weight:bold
+    
+    class MC mainchain
+    class SC1,SC2,SC3,SC4 sidechain
+    class COORD coordinator
